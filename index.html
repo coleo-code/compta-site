@@ -314,6 +314,23 @@ svg text{font-family:var(--f-body)}
 .side-card li span{color:var(--muted);font-size:.93rem}
 .badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 12px;font-weight:700;font-size:.82rem;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);width:fit-content}
 
+
+/* rollen */
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:820px){.roles{grid-template-columns:minmax(0,1fr)}}
+.role{border-radius:28px;padding:26px;box-shadow:var(--shadow);display:grid;gap:14px;align-content:start;background:var(--card)}
+.role.o{background:linear-gradient(160deg,var(--mint),var(--card) 65%)}
+.role.b{background:linear-gradient(160deg,var(--lilac),var(--card) 65%)}
+.role-top{display:flex;align-items:center;gap:12px}
+.role-top .tile{width:46px;height:46px;flex-basis:46px;border-radius:15px;font-size:22px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line)}
+.role-top small{display:block;font:700 12px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.role-top b{font-family:var(--f-display);font-size:1.35rem;line-height:1.15}
+.role ol{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:r}
+.role li{counter-increment:r;display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;background:var(--card);border-radius:16px;padding:11px 14px;box-shadow:inset 0 0 0 1px var(--line);font-weight:600}
+.role li::before{content:counter(r);display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:var(--ink);color:var(--card);font:800 14px/1 var(--f-display)}
+.role p{color:var(--muted);font-size:.97rem}
+.roles-foot{margin-top:22px;text-align:center;font-family:var(--f-display);font-weight:700;font-size:1.15rem}
+
 /* features */
 .feats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media (max-width:1000px){.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -413,6 +430,27 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 </div>
 
 <main>
+<section id="rollen">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">🤝 Wie doet wat</span><h2>Minimale administratie voor de ondernemer. Maximale tijd voor advies.</h2><p class="lead">Compta verzamelt je kosten rechtstreeks uit je bankrekening, je e-mail en je digitale platformen. AI brengt alles samen, groepeert het en zet de boekingen klaar voor goedkeuring.</p></div>
+    <div class="roles">
+      <div class="role o">
+        <div class="role-top"><span class="tile">🧑‍💼</span><div><small>Ondernemer</small><b>Minimale administratie</b></div></div>
+        <p>Als ondernemer doe je nog maar twee dingen:</p>
+        <ol><li>Af en toe een bonnetje scannen.</li><li>Je vragen stellen aan Claude.</li></ol>
+        <p>Compta toetst je vragen af aan je gekoppelde bronnen en dossiers, en legt zijn voorstellen ter goedkeuring voor aan je boekhouder.</p>
+      </div>
+      <div class="role b">
+        <div class="role-top"><span class="tile">🧮</span><div><small>Boekhouder</small><b>Maximale tijd voor advies en optimalisatie</b></div></div>
+        <p>Je boekhouder doet waar hij goed in is:</p>
+        <ol><li>Controleert.</li><li>Adviseert.</li></ol>
+        <p>Geen bonnetjes najagen of bedragen overtikken: de boekingen staan klaar, met bijlage en betaling.</p>
+      </div>
+    </div>
+    <p class="roles-foot">Zo gaat alle aandacht naar doordachte keuzes en fiscale optimalisatie.</p>
+  </div>
+</section>
+
 <section id="flow">
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">🔀 De flow</span><h2>Compta en Octopus, zij aan zij.</h2><p class="lead">Compta verzamelt en controleert, Octopus boekt. Ze praten in twee richtingen via hun API: Compta levert boekingen met bijlage aan, Octopus stuurt de Peppol-facturen terug. PSD2 stuurt Compta zelf aan via de API van Enable Banking.</p></div>
