@@ -1,0 +1,1 @@
+Zet hier de officiële logo-bestanden als <id>.svg (argenta, kbc, belfius, ing, bnp, crelan, revolut, mastercard, codabox, enablebanking, peppol, gmail, octopus, partena, myminfin, nbb). De site toont ze dan automatisch.
