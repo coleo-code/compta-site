@@ -367,6 +367,12 @@ svg text{font-family:var(--f-body)}
 
 .contact{background:var(--card);border-radius:30px;box-shadow:var(--shadow);padding:40px clamp(22px,4vw,48px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
 @media (max-width:760px){.contact{grid-template-columns:minmax(0,1fr)}}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.facts li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:center;font-weight:600;font-size:.98rem;white-space:nowrap}
+.facts .ck{display:grid;place-items:center;width:24px;height:24px;border-radius:8px;background:var(--okbg);color:var(--ok);font-size:13px;font-weight:800}
+.facts b{font-family:var(--f-display);color:var(--accent)}
+.facts a{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+@media (max-width:420px){.facts li{white-space:normal}}
 .copy{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .copy code{font-family:var(--f-mono);background:var(--soft);padding:10px 14px;border-radius:12px;font-size:.95rem;user-select:all}
 footer{padding-block:40px 56px;color:var(--muted);font-size:.85rem}
@@ -467,8 +473,8 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
     <div class="sec-head"><span class="eyebrow">💡 Waarom Compta bestaat</span><h2>De boekhouding is al digitaal. De ondernemer verdient een even goede voorkant.</h2><p class="lead">Octopus is voor de boekhouder robuust, volledig digitaal en open via de API. Maar de kant van de ondernemer bleef een klantenportaal om documenten op te laden: weinig overzicht, geen AI, geen slimme hulp. Compta maakt dat verleden tijd.</p></div>
     <div class="why">
       <article class="wcol old"><span class="badge">Tot nu toe</span><h3>Het klassieke klantenportaal</h3><ul><li><span class="ck">–</span><span>Documenten opladen en hopen</span></li><li><span class="ck">–</span><span>Achteraf horen wat ontbrak</span></li><li><span class="ck">–</span><span>Zelf facturen zoeken</span></li><li><span class="ck">–</span><span>Geen zicht op btw tijdens het jaar</span></li></ul></article>
-      <article class="wcol acc"><span class="badge">Voor de boekhouder</span><h3>Octopus Boekhouding</h3><ul><li><span class="ck">✓</span><span>Robuust en volledig digitaal</span></li><li><span class="ck">✓</span><span>Open API om op te bouwen</span></li><li><span class="ck">✓</span><span>Peppol, btw en jaarrekening</span></li><li><span class="ck">✓</span><span>Werkt zoals de boekhouder gewoon is</span></li></ul></article>
-      <article class="wcol new"><span class="badge">Voor de ondernemer</span><h3>Compta</h3><ul><li><span class="ck">✓</span><span>Elke dag overzicht</span></li><li><span class="ck">✓</span><span>AI koppelt en stelt voor, jij beslist</span></li><li><span class="ck">✓</span><span>App onderweg, web om te controleren</span></li><li><span class="ck">✓</span><span>Gebouwd voor morgen</span></li></ul></article>
+      <article class="wcol acc"><span class="badge">Voor de boekhouder</span><h3>Octopus Boekhouding</h3><ul><li><span class="ck">✓</span><span><span>Robuust en volledig digitaal</span></span></li><li><span class="ck">✓</span><span><span>Open API om op te bouwen</span></span></li><li><span class="ck">✓</span><span><span>Peppol, btw en jaarrekening</span></span></li><li><span class="ck">✓</span><span><span>Werkt zoals de boekhouder gewoon is</span></span></li></ul></article>
+      <article class="wcol new"><span class="badge">Voor de ondernemer</span><h3>Compta</h3><ul><li><span class="ck">✓</span><span><span>Elke dag overzicht</span></span></li><li><span class="ck">✓</span><span><span>AI koppelt en stelt voor, jij beslist</span></span></li><li><span class="ck">✓</span><span><span>App onderweg, web om te controleren</span></span></li><li><span class="ck">✓</span><span><span>Gebouwd voor morgen</span></span></li></ul></article>
     </div>
     <p class="why-quote">Een sterke achterkant voor de boekhouder. <span class="grad">Nu ook een sterke voorkant voor de ondernemer.</span></p>
   </div>
@@ -591,7 +597,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">🚀 Visie</span><h2>Eén laag waar elke bron op kan aansluiten.</h2><p class="lead">Vandaag de bank, de kaart en je documenten. Morgen alles wat geld in of uit je onderneming beweegt.</p></div>
     <div class="road">
-      <article class="stagecard"><h3><span class="tag ok">Nu</span>Operationeel</h3><div class="sbar"><div class="sbar-top"><span>Live</span><b style="color:var(--ok)">100%</b></div><div class="sbar-track"><i style="width:100%;background:var(--ok)"></i></div></div><ul><li><span class="ck">✓</span><span>CODA en PSD2</span></li><li><span class="ck">✓</span><span>Mastercard-uitgavenstaat</span></li><li><span class="ck">✓</span><span>Peppol, mail en scan</span></li><li><span class="ck">✓</span><span>Klaar-voor-Octopus-controle</span></li></ul></article>
+      <article class="stagecard"><h3><span class="tag ok">Nu</span>Operationeel</h3><div class="sbar"><div class="sbar-top"><span>Live</span><b style="color:var(--ok)">100%</b></div><div class="sbar-track"><i style="width:100%;background:var(--ok)"></i></div></div><ul><li><span class="ck">✓</span><span><span>CODA en PSD2</span></span></li><li><span class="ck">✓</span><span><span>Mastercard-uitgavenstaat</span></span></li><li><span class="ck">✓</span><span><span>Peppol, mail en scan</span></span></li><li><span class="ck">✓</span><span><span>Klaar-voor-Octopus-controle</span></span></li></ul></article>
       <article class="stagecard"><h3><span class="tag blue">Volgende</span>Private beta</h3><div class="sbar"><div class="sbar-top"><span>85% klaar</span><b style="color:var(--accent)">85%</b></div><div class="sbar-track"><i style="width:85%;background:var(--accent)"></i></div></div><ul><li><span class="ck">→</span><span>Aanleveren via de Octopus API</span></li><li><span class="ck">→</span><span>MCP-server met Claude</span></li><li><span class="ck">→</span><span>Btw-aangifte via Compta</span></li><li><span class="ck">→</span><span>Sociaal secretariaat als bron</span></li></ul></article>
       <article class="stagecard"><h3><span class="tag warn">Later</span>Groot publiek</h3><div class="sbar"><div class="sbar-top"><span>65% klaar</span><b style="color:var(--warn)">65%</b></div><div class="sbar-track"><i style="width:65%;background:var(--warn)"></i></div></div><ul><li><span class="ck">○</span><span>Meerdere ondernemingen</span></li><li><span class="ck">○</span><span>Kassa en webshop</span></li><li><span class="ck">○</span><span>Betaalproviders zoals Stripe</span></li><li><span class="ck">○</span><span>Compta in de App Store</span></li></ul></article>
     </div>
@@ -607,7 +613,14 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
         <p class="lead">Octopus vond ik nooit een slecht boekhoudpakket. Integendeel. Maar de voorkant voor de ondernemer bleef achter, en een apart facturatieprogramma had ik niet nodig. Weinig boekhoudpakketten hebben een open API. Octopus wel. Dat was de kans om iets te bouwen dat echt werkt.</p>
         <p class="lead">Geen mock-up, geen belofte: het draait vandaag al, elke dag, op een echt dossier in Octopus. Voorlopig voor eigen gebruik. Benieuwd wat er kan? Stuur me een mailtje.</p>
               </div>
-      <div style="display:grid;gap:10px;justify-items:start">
+      <div style="display:grid;gap:16px;justify-items:start">
+        <ul class="facts">
+          <li><span class="ck">✓</span><span>Gebouwd uit eigen noodzaak</span></li>
+          <li><span class="ck">✓</span><span><b>100%</b> onafhankelijk</span></li>
+          <li><span class="ck">✓</span><span><b>100%</b> cloud, API &amp; AI first</span></li>
+          <li><span class="ck">✓</span><span><b>100%</b> Belgisch 🇧🇪</span></li>
+          <li><span class="ck">✓</span><span><b>100%</b> niet Visma of <a href="https://www.wolterskluwer.com/nl-be/solutions/monkey" target="_blank" rel="noopener">Wolters Kluwer</a></span></li>
+        </ul>
         <a class="btn btn-main" href="mailto:michiel@coleo.be?subject=Interesse%20in%20Compta">✉️ Stuur me een mailtje</a>
       </div>
     </div>
