@@ -352,6 +352,11 @@ footer{padding-block:40px 56px;color:var(--muted);font-size:.85rem}
 footer .wrap{display:grid;gap:10px}
 footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .note{font-size:.8rem;color:var(--muted)}
+.live-note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:18px;background:color-mix(in oklab,#22c55e 10%,var(--card));box-shadow:inset 0 0 0 1px color-mix(in oklab,#22c55e 35%,var(--line));max-width:620px}
+.live-note b{color:var(--ink)}
+.live-note span{color:var(--muted);font-size:.95rem;line-height:1.5}
+.live-dot{flex:0 0 10px;height:10px;margin-top:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px color-mix(in oklab,#22c55e 25%,transparent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px color-mix(in oklab,#22c55e 0%,transparent)}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
@@ -374,6 +379,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
       <h1>Je administratie, <span class="grad">vrolijk op orde</span> voor ze geboekt wordt.</h1>
       <p class="lead"><b style="color:var(--ink)">Dé tool voor vennootschappen die via Octopus met hun boekhouder samenwerken.</b> Compta haalt je bank, kaart, facturen en kastickets samen. Het koppelt alles, kiest de btw-code en zet het klaar voor Octopus. Onderweg in de app, rustig controleren op het web.</p>
       <div class="cta-row"><a class="btn btn-main" href="#demo">▶ Bekijk de demo</a><a class="btn btn-ghost" href="#app-web">App of web?</a></div>
+      <div class="live-note"><i class="live-dot" aria-hidden="true"></i><span><b>Klinkt te mooi om waar te zijn? Het werkt echt.</b> De app en het web zijn 100% operationeel en draaien dagelijks op een echt dossier. Een officiële beta is het nog niet: vandaag is Compta vooral voor persoonlijk gebruik.</span></div>
       <div class="mini-stats"><span>🟢 <b>Klaar voor Octopus</b> in één oogopslag</span><span>🔌 <b>API</b> met Octopus, in twee richtingen</span><span>🏦 <b>CODA + PSD2</b></span><span>🧾 <b>Peppol</b> via Octopus</span></div>
     </div>
 
@@ -555,7 +561,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
         <span class="eyebrow">💬 Waarom ik dit bouwde</span>
         <h2>Gebouwd uit eigen noodzaak.</h2>
         <p class="lead">Octopus vond ik nooit een slecht boekhoudpakket. Integendeel. Maar de voorkant voor de ondernemer bleef achter, en een apart facturatieprogramma had ik niet nodig. Weinig boekhoudpakketten hebben een open API. Octopus wel. Dat was de kans om iets te bouwen dat echt werkt.</p>
-        <p class="lead">Benieuwd wat er kan? Stuur me een mailtje.</p>
+        <p class="lead">Geen mock-up, geen belofte: het draait vandaag al, elke dag, op een echt dossier in Octopus. Voorlopig voor eigen gebruik. Benieuwd wat er kan? Stuur me een mailtje.</p>
               </div>
       <div style="display:grid;gap:10px;justify-items:start">
         <a class="btn btn-main" href="mailto:michiel@coleo.be?subject=Interesse%20in%20Compta">✉️ Stuur me een mailtje</a>
