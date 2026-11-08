@@ -495,6 +495,15 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 .peppol-note p{margin:0;color:var(--muted);line-height:1.5}
 .peppol-note b{color:var(--ink)}
 .peppol-note .tile{flex-shrink:0;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:var(--soft);font-size:20px}
+.demo-pick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 18px}
+.dp{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:12px;align-items:center;text-align:left;padding:12px 16px;border-radius:18px;border:0;background:var(--card);box-shadow:var(--shadow);cursor:pointer;font:inherit;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.dp span{grid-row:1/3;width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--soft);font-size:20px}
+.dp b{font:700 1rem/1.2 var(--f-display)}
+.dp small{color:var(--muted);font-size:.78rem}
+.dp:hover{transform:translateY(-2px)}
+.dp.on{box-shadow:var(--shadow),inset 0 0 0 2px var(--accent);background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 12%,var(--card)),var(--card))}
+.dp.on span{background:var(--accent);color:#fff}
+@media (max-width:700px){.demo-pick{grid-template-columns:1fr;gap:8px}.dp{padding:10px 12px}.dp small{display:none}.dp span{grid-row:auto;width:32px;height:32px;font-size:16px}}
 </style>
 
 <div class="ghost" aria-hidden="true"><i class="g1"></i><i class="g2"></i></div>
@@ -648,8 +657,13 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 
 <section id="demo">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">▶ Demo</span><h2>Van kaartbetaling tot boeking. Met een slimme laag ertussen.</h2><p class="lead">Jij scant hoogstens een ticket. Compta zoekt, matcht, toetst aan de realiteit en stelt voor. Zo gaat een koffie met een klant door Compta: klik op een stap of laat hem afspelen.</p></div>
+    <div class="sec-head"><span class="eyebrow">▶ Demo</span><h2>Van kaartbetaling tot boeking. Met een slimme laag ertussen.</h2><p class="lead">Jij scant hoogstens een ticket. Compta zoekt, matcht, toetst aan de realiteit en stelt voor. Kies een voorbeeld: een kasticket, een Peppol-factuur of een buitenlandse kost. Alle drie even vlot.</p></div>
     <div class="peppol-note"><span class="tile">🧾</span><p><b>Peppol zorgde voor een digitale laag bij facturen.</b> Compta zorgt voor <b>hetzelfde gemak bij bonnetjes en buitenlandse kosten</b>, en bij al de rest: kaartbetalingen, abonnementen en je sociaal secretariaat.</p></div>
+    <div class="demo-pick" role="tablist" aria-label="Kies een voorbeeld">
+      <button class="dp on" data-sc="0" role="tab" type="button"><span>🧾</span><b>Kasticket</b><small>koffie met een klant</small></button>
+      <button class="dp" data-sc="1" role="tab" type="button"><span>📡</span><b>Peppol-factuur</b><small>telecomabonnement</small></button>
+      <button class="dp" data-sc="2" role="tab" type="button"><span>🌍</span><b>Buitenlandse kost</b><small>hotel in Londen, in pond</small></button>
+    </div>
     <div class="film">
       <div class="steps" id="steps">
         <button class="step" data-i="0"><i class="n">1</i><div><b>Zoekt actief</b><span>Elke lijn van bank en kaart wordt opgehaald. Niets ontsnapt.</span><div class="prog"><i></i></div></div></button>
@@ -873,7 +887,51 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
   const DUR = 3800; let i = 0, playing = !reduce, t0 = performance.now(), raf;
   const chips = [...document.querySelectorAll('.sm-i')];
   const set = (n) => { i = n; scene.dataset.s = n; chips.forEach((c, k) => c.classList.toggle('on', k === n)); steps.forEach((s, k) => { s.classList.toggle('on', k === n); s.classList.toggle('done', k < n); s.querySelector('.prog i').style.width = k < n ? '100%' : '0'; }); t0 = performance.now(); };
-  const tick = (now) => { if (playing) { const p = Math.min(1, (now - t0) / DUR); steps[i].querySelector('.prog i').style.width = (p * 100) + '%'; if (p >= 1) set((i + 1) % steps.length); } raf = requestAnimationFrame(tick); };
+
+  /* drie voorbeelden */
+  const SC = [
+    { trk:['☕','var(--sun)','Koffie met een klant','Koffiebar De Hoek · 07/11','€ 14,60'],
+      p0:[['🏦','var(--lilac)','Zichtrekening','dagelijks binnen','Koffiebar De Hoek <b>− € 14,60</b>',0],['💳','var(--peach)','Kredietkaart','maandstaat','niets nieuws',1],'🔎 Compta haalt zelf alles op. Jij hoeft niets door te sturen.'],
+      p1:[[['✉️','','Mailbox','geen factuur'],['🛒','','Webshops','niet hier'],['📸','var(--mint)','App','gescand ✓']],2,['🧾','var(--sun)','Kasticket','2× koffie, 1× taart','€ 14,60']],
+      p2:[['🏦','var(--lilac)','− € 14,60','07/11 · De Hoek'],['🧾','var(--sun)','€ 14,60','07/11 · De Hoek'],['✓ Bedrag','✓ Datum','✓ Leverancier']],
+      p3:[[['📍','var(--pink)','Locatie','Gent · 200 m van je afspraak'],['📅','var(--soft)','Agenda','10:00 koffie met klant'],['🔁','var(--lilac)','Patroon','klantgesprek · 3× per maand']],'✓ Klopt met de realiteit'],
+      p4:['Restaurant &amp; representatie','zoals je boekhouder boekt','21% · niet aftrekbaar','noteer met wie je afsprak'],
+      p5:['geboekt · bijlage · betaling','✅ Jij scande één ticket. Compta deed de rest.'] },
+    { trk:['📡','var(--soft)','Factuur internet en gsm','Telecom Plus · 05/11 · via Peppol','€ 72,60'],
+      p0:[['🏦','var(--lilac)','Zichtrekening','domiciliëring','Telecom Plus <b>− € 72,60</b>',0],['💳','var(--peach)','Kredietkaart','maandstaat','niets nieuws',1],'🔎 De betaling komt binnen via je bank. Compta ziet ze meteen.'],
+      p1:[[['✉️','','Mailbox','kopie, niet nodig'],['🛒','','Webshops','niet nodig'],['📡','var(--mint)','Peppol','e-factuur binnen ✓']],2,['🧾','var(--soft)','E-factuur (UBL)','structuur, btw-nr en lijnen al digitaal','€ 72,60']],
+      p2:[['🏦','var(--lilac)','− € 72,60','07/11 · domiciliëring'],['📡','var(--soft)','€ 72,60','05/11 · Telecom Plus'],['✓ Bedrag','✓ Mededeling','✓ Btw-nummer']],
+      p3:[[['🔁','var(--lilac)','Patroon','elke maand ± € 72'],['📄','var(--soft)','Abonnement','sinds 2024, zelfde lijnen'],['🏢','var(--pink)','Leverancier','gekend btw-nummer']],'✓ Klopt met je abonnement'],
+      p4:['Telefoon &amp; internet','zoals je boekhouder boekt','21% · aftrekbaar (beroepsdeel)','privédeel volgens je eigen regel'],
+      p5:['geboekt · UBL · betaling','✅ Peppol leverde de factuur. Compta deed de rest.'] },
+    { trk:['🏨','var(--peach)','Hotel in Londen','Hotel Thameside · 12/11 · £ 118,00','€ 137,92'],
+      p0:[['🏦','var(--lilac)','Zichtrekening','dagelijks binnen','niets nieuws',1],['💳','var(--peach)','Kredietkaart','Mastercard','Hotel Thameside <b>− € 137,92</b>',0],'🔎 Ook kaartbetalingen in het buitenland worden opgehaald.'],
+      p1:[[['✉️','var(--mint)','Mailbox','hotelfactuur gevonden ✓'],['🛒','','Reissite','reservatie'],['📸','','App','niet nodig']],0,['🧾','var(--peach)','Hotelfactuur (pdf)','1 nacht · £ 118,00 · Britse btw','€ 137,92']],
+      p2:[['💳','var(--peach)','− € 137,92','12/11 · Mastercard'],['🧾','var(--peach)','£ 118,00','12/11 · Thameside'],['✓ Bedrag aan koers 1,1688','✓ Datum','✓ Leverancier']],
+      p3:[[['📍','var(--pink)','Locatie','Londen · klantbezoek'],['📅','var(--soft)','Agenda','11–13/11 reis UK'],['🔁','var(--lilac)','Patroon','buitenlandse reis · 4× per jaar']],'✓ Klopt met je reis'],
+      p4:['Hotel &amp; verblijf buitenland','zoals je boekhouder boekt','buitenlandse btw · niet aftrekbaar in België','koers van de betaaldag, bedrag in euro'],
+      p5:['geboekt · in euro · bijlage','✅ Ander land, andere munt. Even vlot.'] }
+  ];
+  const q = (sel, root = scene) => [...root.querySelectorAll(sel)];
+  const tile = (el, [e, bg]) => { if (!el) return; el.textContent = e; el.style.background = bg || ''; };
+  const box = (b, d) => { tile(b.querySelector('.tile'), d); const t = b.querySelector(':scope > b'), m = b.querySelector(':scope > small'); if (t) t.innerHTML = d[2]; if (m) m.innerHTML = d[3]; };
+  let sc = 0;
+  const apply = (k) => {
+    sc = k; const d = SC[k];
+    document.querySelectorAll('.dp').forEach((b, j) => { b.classList.toggle('on', j === k); b.setAttribute('aria-selected', j === k); });
+    const tr = scene.querySelector('.trk'); tile(tr.querySelector('.tile'), d.trk); tr.querySelector('div b').innerHTML = d.trk[2]; tr.querySelector('div small').innerHTML = d.trk[3]; tr.querySelector('.amt').innerHTML = d.trk[4];
+    const p0 = q('[data-p="0"] .bx'); d.p0.slice(0, 2).forEach((x, j) => { box(p0[j], x); const h = p0[j].querySelector('.hit'); h.innerHTML = x[4]; h.classList.toggle('dim', !!x[5]); });
+    scene.querySelector('[data-p="0"] .cap').innerHTML = d.p0[2];
+    const p1 = q('[data-p="1"] .row .bx'); d.p1[0].forEach((x, j) => { box(p1[j], x); p1[j].classList.toggle('on', j === d.p1[1]); });
+    const tk = scene.querySelector('[data-p="1"] .tick'); tile(tk.querySelector('.tile'), d.p1[2]); tk.querySelector('div b').innerHTML = d.p1[2][2]; tk.querySelector('div small').innerHTML = d.p1[2][3]; tk.querySelector('.amt').innerHTML = d.p1[2][4];
+    const p2 = q('[data-p="2"] .bx'); box(p2[0], d.p2[0]); box(p2[1], d.p2[1]); q('[data-p="2"] .checks span').forEach((c, j) => c.innerHTML = d.p2[2][j]);
+    const p3 = q('[data-p="3"] .bx'); d.p3[0].forEach((x, j) => box(p3[j], x)); scene.querySelector('[data-p="3"] .stamp').innerHTML = d.p3[1];
+    q('[data-p="4"] li b').forEach((c, j) => c.innerHTML = d.p4[j]);
+    scene.querySelector('[data-p="5"] .octo small').innerHTML = d.p5[0]; scene.querySelector('[data-p="5"] .cap').innerHTML = d.p5[1];
+  };
+  document.querySelectorAll('.dp').forEach((b, j) => b.addEventListener('click', () => { apply(j); set(0); }));
+  apply(0);
+  const tick = (now) => { if (playing) { const p = Math.min(1, (now - t0) / DUR); steps[i].querySelector('.prog i').style.width = (p * 100) + '%'; if (p >= 1) { if (i === steps.length - 1) apply((sc + 1) % SC.length); set((i + 1) % steps.length); } } raf = requestAnimationFrame(tick); };
   steps.forEach((s, k) => s.addEventListener('click', () => set(k)));
   chips.forEach((c, k) => c.addEventListener('click', () => { set(k); document.getElementById('scene').scrollIntoView({ behavior: 'smooth', block: 'center' }); }));
   const upd = () => { playBtn.textContent = playing ? '❚❚ Pauze' : '▶ Afspelen'; lbl.textContent = playing ? 'Speelt automatisch' : 'Gepauzeerd'; };
