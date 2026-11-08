@@ -188,6 +188,10 @@ nav .wrap{display:flex;align-items:center;gap:20px;padding-block:12px}
 .track{display:flex;gap:12px;width:max-content;animation:marq 38s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
 @keyframes marq{to{transform:translateX(-50%)}}
+.track.rev{animation:marqr 46s linear infinite}
+@keyframes marqr{from{transform:translateX(-50%)}to{transform:none}}
+.logos .p2{margin:22px 0 14px}
+.marquee{padding-block:6px 14px}
 .lgo{display:inline-flex;align-items:center;gap:9px;height:52px;padding:0 18px;border-radius:16px;background:var(--card);box-shadow:var(--shadow);white-space:nowrap;font-weight:700;font-size:.95rem}
 .lgo img{height:26px;width:auto;display:block}
 .lgo .mk{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font:800 13px var(--f-display);color:#fff}
@@ -539,6 +543,8 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 <div class="logos">
   <div class="wrap"><p>Werkt samen met de tools die je al gebruikt</p></div>
   <div class="marquee"><div class="track" id="track"></div></div>
+  <div class="wrap"><p class="p2">En haalt je facturen en kosten op bij de diensten waar je abonnementen hebt</p></div>
+  <div class="marquee"><div class="track rev" id="track2"></div></div>
 </div>
 
 <main>
@@ -807,6 +813,18 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
     return d;
   };
   [...L, ...L].forEach((l, i) => track.appendChild(make(l, i % L.length)));
+  const K = [
+    ['anthropic','Anthropic','Claude · AI'],['openai','OpenAI','ChatGPT · AI'],['google','Google Workspace','Gmail · Drive'],['microsoft','Microsoft 365','Office'],['apple','Apple','iCloud · App Store'],
+    ['adobe','Adobe','Creative Cloud'],['canva','Canva','Design'],['notion','Notion','Notities'],['slack','Slack','Chat'],['zoom','Zoom','Meetings'],['dropbox','Dropbox','Opslag'],['pcloud','pCloud','Opslag'],
+    ['lovable','Lovable','Apps bouwen'],['github','GitHub','Code'],['cloudflare','Cloudflare','Domeinen'],['combell','Combell','Hosting'],
+    ['netflix','Netflix','Streaming'],['spotify','Spotify','Muziek'],['disney','Disney+','Streaming'],['youtube','YouTube Premium','Streaming'],
+    ['amazon','Amazon','Aankopen · Prime'],['bol','bol','Aankopen'],['coolblue','Coolblue','Aankopen'],
+    ['proximus','Proximus','Telecom'],['telenet','Telenet','Telecom'],['orange','Orange','Telecom'],
+    ['linkedin','LinkedIn','Premium'],['uber','Uber','Vervoer'],['nmbs','NMBS','Treinkaarten'],['parking','4411 · Parkings','Parkeren'],['shell','Shell · TotalEnergies','Brandstof'],
+    ['partena','Partena','Sociaal secretariaat'],['xerius','Xerius','Sociaal verzekeringsfonds'],['liantis','Liantis','Sociaal secretariaat'],['acerta','Acerta','Sociaal secretariaat'],['doccle','Doccle','Brieven']
+  ];
+  const t2 = document.getElementById('track2');
+  [...K, ...K].forEach((l, i) => t2.appendChild(make(l, (i % K.length) + 3)));
 })();
 
 /* hero devices: echte schermen (demo-gegevens), wisselen om de beurt */
