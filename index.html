@@ -271,7 +271,9 @@ svg text{font-family:var(--f-body)}
 .why-quote{margin-top:26px;font:800 clamp(1.3rem,2.6vw,1.9rem)/1.2 var(--f-display);letter-spacing:-.01em;max-width:30ch}
 /* demo film */
 .smart{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
-.smart span{background:var(--card);box-shadow:var(--shadow);border-radius:14px;padding:9px 13px;font-size:.86rem;color:var(--muted)}
+.smart .sm-i{all:unset;cursor:pointer;background:var(--card);box-shadow:var(--shadow);border-radius:14px;padding:9px 13px;font-size:.86rem;color:var(--muted);transition:transform .3s,box-shadow .3s}
+.smart .sm-i:hover{transform:translateY(-2px)}
+.smart .sm-i.on{box-shadow:0 0 0 2px var(--accent),var(--shadow);transform:translateY(-2px)}
 .smart b{color:var(--ink);font-family:var(--f-display);margin-right:3px}
 .film{background:var(--card);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr)}
 @media (max-width:860px){.film{grid-template-columns:minmax(0,1fr)}}
@@ -289,24 +291,54 @@ svg text{font-family:var(--f-body)}
 .prog i{display:block;height:100%;width:0;background:var(--accent)}
 .playrow{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:.85rem}
 .scene{position:relative;min-height:380px;background:radial-gradient(80% 70% at 20% 10%,var(--soft),transparent 60%),radial-gradient(70% 60% at 90% 90%,var(--pink),transparent 60%),var(--bg);overflow:hidden}
-.sc-card{position:absolute;background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:14px 16px;transition:all .8s cubic-bezier(.2,.8,.2,1);font-size:.9rem;width:250px;max-width:70%}
-.sc-card b{font-family:var(--f-display)}
-.sc-card .ap-mut{font-size:.78rem}
-.sc-bank{left:6%;top:12%}
-.sc-doc{right:6%;top:12%}
-.sc-match{left:50%;top:44%;transform:translate(-50%,-50%) scale(.9);opacity:0;width:300px}
-.sc-octo{left:50%;bottom:8%;transform:translateX(-50%);opacity:.35;width:280px;text-align:center}
-.scene .link{position:absolute;left:30%;right:30%;top:26%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent2),var(--ok));transform:scaleX(0);transform-origin:left;transition:transform .9s}
-.scene[data-s="0"] .sc-bank{box-shadow:0 0 0 3px var(--accent2),var(--shadow)}
-.scene[data-s="0"] .sc-doc{opacity:.25;transform:translateY(10px)}
-.scene[data-s="1"] .sc-doc{box-shadow:0 0 0 3px var(--accent2),var(--shadow)}
-.scene[data-s="2"] .link,.scene[data-s="3"] .link{transform:scaleX(1)}
-.scene[data-s="2"] .sc-match,.scene[data-s="3"] .sc-match{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.scene[data-s="2"] .sc-bank,.scene[data-s="2"] .sc-doc,.scene[data-s="3"] .sc-bank,.scene[data-s="3"] .sc-doc{opacity:.5}
-.scene[data-s="3"] .sc-octo{opacity:1;box-shadow:0 0 0 3px var(--ok),var(--shadow)}
-.scene[data-s="3"] .sc-match{transform:translate(-50%,-10%) scale(.85);opacity:.0}
-.flash-cam{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
-.scene[data-s="1"] .flash-cam{animation:cam .7s ease .2s}
+.trk{position:relative;z-index:2;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;margin:16px 16px 0;padding:10px 12px;border-radius:16px;background:var(--card);box-shadow:var(--shadow)}
+.trk small,.bx small{display:block;color:var(--muted);font-size:.74rem}
+.trk b{font-family:var(--f-display)}
+.trk .pills{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px}
+.trk .pills i{font-style:normal;font-size:.68rem;font-weight:700;padding:3px 8px;border-radius:99px;background:var(--line);color:var(--muted);transition:all .4s}
+.scene[data-s="0"] .pills i:nth-child(-n+1){background:var(--okbg);color:var(--ok)}.scene[data-s="1"] .pills i:nth-child(-n+2){background:var(--okbg);color:var(--ok)}.scene[data-s="2"] .pills i:nth-child(-n+3){background:var(--okbg);color:var(--ok)}.scene[data-s="3"] .pills i:nth-child(-n+4){background:var(--okbg);color:var(--ok)}.scene[data-s="4"] .pills i:nth-child(-n+5){background:var(--okbg);color:var(--ok)}.scene[data-s="5"] .pills i:nth-child(-n+6){background:var(--okbg);color:var(--ok)}
+.scene{display:flex;flex-direction:column}
+.pn{display:none;position:relative;flex:1;padding:18px 16px 20px;gap:16px;align-content:center;justify-items:center;min-height:290px}
+.pn[data-p="0"] .bx{flex:1 1 150px;max-width:230px}
+.scene[data-s="0"] .pn[data-p="0"],.scene[data-s="1"] .pn[data-p="1"],.scene[data-s="2"] .pn[data-p="2"],.scene[data-s="3"] .pn[data-p="3"],.scene[data-s="4"] .pn[data-p="4"],.scene[data-s="5"] .pn[data-p="5"]{display:grid}
+.pn .row{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:100%}
+.pn .row.pair{flex-wrap:nowrap;align-items:center}
+.bx{position:relative;overflow:hidden;background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:14px;display:grid;justify-items:start;gap:4px;min-width:150px;font-size:.88rem}
+.bx b{font-family:var(--f-display)}
+.bx.sm{min-width:0;flex:1 1 120px;max-width:190px}
+.bx.on{box-shadow:0 0 0 3px var(--ok),var(--shadow)}
+.bx .tile{width:34px;height:34px;flex-basis:34px;border-radius:11px;font-size:17px}
+.bx .hit{margin-top:6px;padding:6px 9px;border-radius:10px;background:var(--warnbg);font-size:.8rem;width:100%;display:flex;justify-content:space-between;gap:8px}
+.bx .hit b{color:var(--warn)}
+.bx .hit.dim{background:var(--soft);color:var(--muted)}
+.scan{position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--accent2) 22%,transparent) 50%,transparent 70%);transform:translateX(-100%);animation:scan 1.6s ease-in-out .2s 2}
+@keyframes scan{to{transform:translateX(100%)}}
+.bx.tick{grid-template-columns:auto minmax(0,1fr) auto;align-items:center;width:min(100%,330px);justify-items:stretch}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;border-radius:0}
+.pn[data-p="1"] .flash{animation:cam .6s ease .9s both}
+.wire{flex:0 0 46px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent2),var(--ok));transform-origin:left;animation:grow .6s ease both}
+.wire.ok{background:var(--ok)}
+@keyframes grow{from{transform:scaleX(0)}}
+.checks{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.checks span{font-size:.8rem;font-weight:700;padding:5px 10px;border-radius:99px;background:var(--okbg);color:var(--ok)}
+.meter{position:relative;width:min(100%,320px);height:26px;border-radius:99px;background:var(--line);overflow:hidden}
+.meter i{position:absolute;inset:0;background:linear-gradient(90deg,var(--accent2),var(--ok));transform-origin:left;animation:grow 1.2s ease .6s both}
+.meter b{position:relative;display:grid;place-items:center;height:100%;font:800 .8rem var(--f-display);color:#fff}
+.stamp{font:800 1rem var(--f-display);color:var(--ok);padding:10px 18px;border:3px solid var(--ok);border-radius:14px;transform:rotate(-4deg)}
+.bx.prop{width:min(100%,360px);justify-items:stretch}
+.bx.prop ul{list-style:none;margin:6px 0;padding:0;display:grid;gap:6px}
+.bx.prop li{display:flex;justify-content:space-between;gap:10px;padding:7px 10px;border-radius:10px;background:var(--soft);font-size:.82rem}
+.bx.prop li span{color:var(--muted)}
+.okbtn{all:unset;margin-top:6px;padding:7px 12px;border-radius:10px;background:var(--ok);color:#fff;font:700 .8rem var(--f-body);animation:press .5s ease 1s both}
+@keyframes press{50%{transform:scale(.9)}}
+.bx.octo{box-shadow:0 0 0 3px var(--ok),var(--shadow)}
+.pn .cap{margin:0;font-size:.86rem;color:var(--muted);text-align:center}
+.pn .a1,.pn .a2,.pn .a3,.pn .a4,.pn .a5{animation-name:pop;animation-duration:.55s;animation-timing-function:cubic-bezier(.2,.8,.2,1);animation-fill-mode:both}
+.pn .a1{animation-delay:.05s}.pn .a2{animation-delay:.45s}.pn .a3{animation-delay:.85s}.pn .a4{animation-delay:1.25s}.pn .a5{animation-delay:1.65s}
+.pn .wire.a2,.pn .wire.a3{animation-name:grow}.pn .meter.a3{animation-name:pop}.pn .okbtn.a2{animation-name:pop,press;animation-duration:.5s,.4s;animation-delay:.45s,1.3s}
+.pn .flash.a3{animation-name:cam;animation-delay:.85s;animation-duration:.6s}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}}
+@media (max-width:560px){.pn{min-height:300px;padding:14px 10px}.bx.sm{flex-basis:90px;padding:10px}.bx{font-size:.8rem}.wire{flex-basis:22px}}
 @keyframes cam{30%{opacity:.7}100%{opacity:0}}
 .sent{display:inline-flex;gap:6px;align-items:center;margin-top:6px;font-weight:700;color:var(--ok)}
 
@@ -571,23 +603,69 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
     <div class="sec-head"><span class="eyebrow">▶ Demo</span><h2>Van kaartbetaling tot boeking. Met een slimme laag ertussen.</h2><p class="lead">Jij scant hoogstens een ticket. Compta zoekt, matcht, toetst aan de realiteit en stelt voor. Zo gaat een koffie met een klant door Compta: klik op een stap of laat hem afspelen.</p></div>
     <div class="film">
       <div class="steps" id="steps">
-        <button class="step" data-i="0"><i class="n">1</i><div><b>Compta vindt de betaling</b><span>Zelf opgehaald van je bank en kaart: € 14,60 op 07/11, debetkaart. Geen enkele lijn ontsnapt.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="1"><i class="n">2</i><div><b>Het bewijs wordt gezocht</b><span>Ticket gescand in de app, of zelf gevonden in je mailbox en webshops. Geen bewijs? Dan vraagt Compta erom.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="2"><i class="n">3</i><div><b>Volledig gematcht en getoetst</b><span>Bedrag, datum en leverancier kloppen. Getoetst aan je locatie en agenda, en aan best practices en de regels van je boekhouder.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="3"><i class="n">4</i><div><b>Voorgesteld, jij keurt goed</b><span>Overzichtelijk klaargezet met bijlage, betaling, btw en uitleg. Eén tik en het staat in Octopus.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="0"><i class="n">1</i><div><b>Zoekt actief</b><span>Elke lijn van bank en kaart wordt opgehaald. Niets ontsnapt.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="1"><i class="n">2</i><div><b>Vindt het bewijs</b><span>In je mailbox, webshops of de app. Geen bewijs? Compta vraagt erom.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="2"><i class="n">3</i><div><b>Matcht volledig</b><span>Bedrag, datum en leverancier: betaling en ticket horen samen.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="3"><i class="n">4</i><div><b>Toetst aan de realiteit</b><span>Klopt het met je locatie, je agenda en je patronen?</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="4"><i class="n">5</i><div><b>Stelt voor, met uitleg</b><span>Categorie, rekening en btw volgens best practices en de regels van je boekhouder.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="5"><i class="n">6</i><div><b>Jij beslist</b><span>Eén tik en het staat in Octopus, met bijlage en betaling.</span><div class="prog"><i></i></div></div></button>
         <div class="playrow"><button class="btn btn-ghost" id="play" type="button" style="padding:9px 14px">❚❚ Pauze</button><span id="playlbl">Speelt automatisch</span></div>
       </div>
       <div class="scene" id="scene" data-s="0" aria-live="polite">
-        <div class="sc-card sc-bank"><div style="display:flex;gap:10px;align-items:center"><span class="tile" style="background:var(--lilac)">🏦</span><div><b>Zichtrekening</b><div class="ap-mut">CODA · 07/11 · code <span class="mono">113</span> debetkaart</div></div></div><div style="display:flex;justify-content:space-between;margin-top:8px"><span>Koffiebar De Hoek</span><b class="amt" style="color:var(--warn)">− € 14,60</b></div></div>
-        <div class="sc-card sc-doc"><div style="display:flex;gap:10px;align-items:center"><span class="tile" style="background:var(--sun)">🧾</span><div><b>Kasticket</b><div class="ap-mut">Gescand met de app</div></div></div><div style="display:flex;justify-content:space-between;margin-top:8px"><span>2× koffie, 1× taart</span><b class="amt">€ 14,60</b></div></div>
-        <i class="link"></i>
-        <div class="sc-card sc-match"><b>✓ Gematcht en getoetst</b><div class="ap-mut" style="margin-top:2px">Zelfde bedrag, dag en naam · 📍 Gent · 📅 afspraak met klant</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px"><span class="tg ok" style="font-size:11px">Kasticket</span><span class="tg bl" style="font-size:11px">Debetkaart</span><span class="tg bl" style="font-size:11px">Btw 21% · D21</span><span class="tg bl" style="font-size:11px">612000 Representatie</span></div></div>
-        <div class="sc-card sc-octo"><b>Octopus Boekhouding</b><div class="ap-mut">Aankoopdagboek · bijlage ticket.jpg</div><div class="sent">✓ Klaar om te boeken</div></div>
-        <i class="flash-cam"></i>
+        <div class="trk"><span class="tile" style="background:var(--sun)">☕</span><div><b>Koffie met een klant</b><small>Koffiebar De Hoek · 07/11</small></div><b class="amt">€ 14,60</b>
+          <div class="pills"><i>Gevonden</i><i>Bewijs</i><i>Gematcht</i><i>Getoetst</i><i>Voorstel</i><i>Geboekt</i></div></div>
+        <div class="pn" data-p="0">
+          <div class="row">
+            <div class="bx a1"><span class="tile" style="background:var(--lilac)">🏦</span><b>Zichtrekening</b><small>dagelijks binnen</small><div class="scan"></div><div class="hit a3">Koffiebar De Hoek <b>− € 14,60</b></div></div>
+            <div class="bx a2"><span class="tile" style="background:var(--peach)">💳</span><b>Kredietkaart</b><small>maandstaat</small><div class="scan"></div><div class="hit dim a4">niets nieuws</div></div>
+          </div>
+          <p class="cap a4">🔎 Compta haalt zelf alles op. Jij hoeft niets door te sturen.</p>
+        </div>
+        <div class="pn" data-p="1">
+          <div class="row three">
+            <div class="bx sm a1"><span class="tile">✉️</span><b>Mailbox</b><small>geen factuur</small></div>
+            <div class="bx sm a2"><span class="tile">🛒</span><b>Webshops</b><small>niet hier</small></div>
+            <div class="bx sm on a3"><span class="tile" style="background:var(--mint)">📸</span><b>App</b><small>gescand ✓</small></div>
+          </div>
+          <div class="bx tick a4"><span class="tile" style="background:var(--sun)">🧾</span><div><b>Kasticket</b><small>2× koffie, 1× taart</small></div><b class="amt">€ 14,60</b></div>
+          <i class="flash a3"></i>
+        </div>
+        <div class="pn" data-p="2">
+          <div class="row pair">
+            <div class="bx sm a1"><span class="tile" style="background:var(--lilac)">🏦</span><b>− € 14,60</b><small>07/11 · De Hoek</small></div>
+            <i class="wire a2"></i>
+            <div class="bx sm a1"><span class="tile" style="background:var(--sun)">🧾</span><b>€ 14,60</b><small>07/11 · De Hoek</small></div>
+          </div>
+          <div class="checks"><span class="a2">✓ Bedrag</span><span class="a3">✓ Datum</span><span class="a4">✓ Leverancier</span></div>
+          <div class="meter a3"><i></i><b>100% gematcht</b></div>
+        </div>
+        <div class="pn" data-p="3">
+          <div class="row three">
+            <div class="bx sm a1"><span class="tile" style="background:var(--pink)">📍</span><b>Locatie</b><small>Gent · 200 m van je afspraak</small></div>
+            <div class="bx sm a2"><span class="tile" style="background:var(--soft)">📅</span><b>Agenda</b><small>10:00 koffie met klant</small></div>
+            <div class="bx sm a3"><span class="tile" style="background:var(--lilac)">🔁</span><b>Patroon</b><small>klantgesprek · 3× per maand</small></div>
+          </div>
+          <div class="stamp a4">✓ Klopt met de realiteit</div>
+        </div>
+        <div class="pn" data-p="4">
+          <div class="bx prop a1">
+            <b>💡 Voorstel</b>
+            <ul><li class="a2"><span>Categorie</span><b>Restaurant &amp; representatie</b></li><li class="a3"><span>Rekening</span><b>zoals je boekhouder boekt</b></li><li class="a4"><span>Btw</span><b>21% · niet aftrekbaar</b></li><li class="a5"><span>Tip</span><b>noteer met wie je afsprak</b></li></ul>
+            <small class="a5">📚 Volgens best practices en de regels van je boekhouder</small>
+          </div>
+        </div>
+        <div class="pn" data-p="5">
+          <div class="row pair">
+            <div class="bx sm a1"><span class="tile" style="background:var(--okbg)">👍</span><b>Akkoord?</b><button class="okbtn a2" tabindex="-1" type="button">✓ Goedkeuren</button></div>
+            <i class="wire ok a3"></i>
+            <div class="bx sm octo a4"><span class="tile" style="background:var(--okbg)">🐙</span><b>Octopus</b><small>geboekt · bijlage · betaling</small></div>
+          </div>
+          <p class="cap a5">✅ Jij keek één keer. Compta deed de rest.</p>
+        </div>
       </div>
     </div>
   <div class="smart">
-      <span>🔎 <b>Zoekt actief</b> kosten en bewijs</span><span>🔗 <b>Volledige matching</b> bank, kaart, document</span><span>📍 <b>Getoetst aan de realiteit</b> locatie, agenda, patronen</span><span>📚 <b>Best practices</b> en de regels van je boekhouder</span><span>💡 <b>Voorstel met uitleg</b> btw, rekening, categorie</span><span>✅ <b>Jij beslist</b> overzichtelijk, in één tik</span>
+      <button class="sm-i" data-i="0" type="button">🔎 <b>Zoekt actief</b> kosten en bewijs</button><button class="sm-i" data-i="1" type="button">🔗 <b>Volledige matching</b> bank, kaart, document</button><button class="sm-i" data-i="2" type="button">📍 <b>Getoetst aan de realiteit</b> locatie, agenda, patronen</button><button class="sm-i" data-i="3" type="button">📚 <b>Best practices</b> en de regels van je boekhouder</button><button class="sm-i" data-i="4" type="button">💡 <b>Voorstel met uitleg</b> btw, rekening, categorie</button><button class="sm-i" data-i="5" type="button">✅ <b>Jij beslist</b> overzichtelijk, in één tik</button>
     </div>
   </div>
 </section>
@@ -731,13 +809,15 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const scene = document.getElementById('scene'), steps = [...document.querySelectorAll('.step')], playBtn = document.getElementById('play'), lbl = document.getElementById('playlbl');
-  const DUR = 3200; let i = 0, playing = !reduce, t0 = performance.now(), raf;
-  const set = (n) => { i = n; scene.dataset.s = n; steps.forEach((s, k) => { s.classList.toggle('on', k === n); s.classList.toggle('done', k < n); s.querySelector('.prog i').style.width = k < n ? '100%' : '0'; }); t0 = performance.now(); };
-  const tick = (now) => { if (playing) { const p = Math.min(1, (now - t0) / DUR); steps[i].querySelector('.prog i').style.width = (p * 100) + '%'; if (p >= 1) set((i + 1) % 4); } raf = requestAnimationFrame(tick); };
+  const DUR = 3800; let i = 0, playing = !reduce, t0 = performance.now(), raf;
+  const chips = [...document.querySelectorAll('.sm-i')];
+  const set = (n) => { i = n; scene.dataset.s = n; chips.forEach((c, k) => c.classList.toggle('on', k === n)); steps.forEach((s, k) => { s.classList.toggle('on', k === n); s.classList.toggle('done', k < n); s.querySelector('.prog i').style.width = k < n ? '100%' : '0'; }); t0 = performance.now(); };
+  const tick = (now) => { if (playing) { const p = Math.min(1, (now - t0) / DUR); steps[i].querySelector('.prog i').style.width = (p * 100) + '%'; if (p >= 1) set((i + 1) % steps.length); } raf = requestAnimationFrame(tick); };
   steps.forEach((s, k) => s.addEventListener('click', () => set(k)));
+  chips.forEach((c, k) => c.addEventListener('click', () => { set(k); document.getElementById('scene').scrollIntoView({ behavior: 'smooth', block: 'center' }); }));
   const upd = () => { playBtn.textContent = playing ? '❚❚ Pauze' : '▶ Afspelen'; lbl.textContent = playing ? 'Speelt automatisch' : 'Gepauzeerd'; };
   playBtn.addEventListener('click', () => { playing = !playing; t0 = performance.now(); upd(); });
-  set(0); if (reduce) { set(3); playing = false; } upd(); raf = requestAnimationFrame(tick);
+  set(0); if (reduce) { set(steps.length - 1); playing = false; } upd(); raf = requestAnimationFrame(tick);
 })();
 
 (() => {
