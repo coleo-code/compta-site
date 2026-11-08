@@ -669,7 +669,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
         <button class="step" data-i="0"><i class="n">1</i><div><b>Zoekt actief</b><span>Elke lijn van bank en kaart wordt opgehaald. Niets ontsnapt.</span><div class="prog"><i></i></div></div></button>
         <button class="step" data-i="1"><i class="n">2</i><div><b>Vindt het bewijs</b><span>In je mailbox, webshops of de app. Geen bewijs? Compta vraagt erom.</span><div class="prog"><i></i></div></div></button>
         <button class="step" data-i="2"><i class="n">3</i><div><b>Matcht volledig</b><span>Bedrag, datum en leverancier: betaling en ticket horen samen.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="3"><i class="n">4</i><div><b>Toetst aan de realiteit</b><span>Klopt het met je locatie, je agenda en je patronen?</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="3"><i class="n">4</i><div><b>Toetst aan de realiteit 💡</b><span>Het eureka-moment: recente controles, benchmarks met gelijkaardige bedrijven, je risicoprofiel en trends. Hier zit het verschil.</span><div class="prog"><i></i></div></div></button>
         <button class="step" data-i="4"><i class="n">5</i><div><b>Stelt voor, met uitleg</b><span>Categorie, rekening en btw volgens best practices en de regels van je boekhouder.</span><div class="prog"><i></i></div></div></button>
         <button class="step" data-i="5"><i class="n">6</i><div><b>Jij beslist</b><span>Eén tik en het staat in Octopus, met bijlage en betaling.</span><div class="prog"><i></i></div></div></button>
         <div class="playrow"><button class="btn btn-ghost" id="play" type="button" style="padding:9px 14px">❚❚ Pauze</button><span id="playlbl">Speelt automatisch</span></div>
@@ -704,11 +704,12 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
         </div>
         <div class="pn" data-p="3">
           <div class="row three">
-            <div class="bx sm a1"><span class="tile" style="background:var(--pink)">📍</span><b>Locatie</b><small>Gent · 200 m van je afspraak</small></div>
+            <div class="bx sm a1"><span class="tile" style="background:var(--pink)">🔍</span><b>Recente controles</b><small>restaurantkosten worden vaak nagekeken</small></div>
             <div class="bx sm a2"><span class="tile" style="background:var(--soft)">📅</span><b>Agenda</b><small>10:00 koffie met klant</small></div>
             <div class="bx sm a3"><span class="tile" style="background:var(--lilac)">🔁</span><b>Patroon</b><small>klantgesprek · 3× per maand</small></div>
           </div>
-          <div class="stamp a4">✓ Klopt met de realiteit</div>
+          <div class="stamp a4">💡 Eureka: verantwoord en verdedigbaar</div>
+          <p class="cap a5">🧠 Zo bouwt Compta je persoonlijk en bedrijfsprofiel op, kost na kost.</p>
         </div>
         <div class="pn" data-p="4">
           <div class="bx prop a1">
@@ -728,7 +729,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
       </div>
     </div>
   <div class="smart">
-      <button class="sm-i" data-i="0" type="button">🔎 <b>Zoekt actief</b> kosten en bewijs</button><button class="sm-i" data-i="1" type="button">🔗 <b>Volledige matching</b> bank, kaart, document</button><button class="sm-i" data-i="2" type="button">📍 <b>Getoetst aan de realiteit</b> locatie, agenda, patronen</button><button class="sm-i" data-i="3" type="button">📚 <b>Best practices</b> en de regels van je boekhouder</button><button class="sm-i" data-i="4" type="button">💡 <b>Voorstel met uitleg</b> btw, rekening, categorie</button><button class="sm-i" data-i="5" type="button">✅ <b>Jij beslist</b> overzichtelijk, in één tik</button>
+      <button class="sm-i" data-i="0" type="button">🔎 <b>Zoekt actief</b> kosten en bewijs</button><button class="sm-i" data-i="1" type="button">🔗 <b>Volledige matching</b> bank, kaart, document</button><button class="sm-i" data-i="2" type="button">💡 <b>Getoetst aan de realiteit</b> controles, benchmarks, risicoprofiel</button><button class="sm-i" data-i="3" type="button">📚 <b>Best practices</b> en de regels van je boekhouder</button><button class="sm-i" data-i="4" type="button">💡 <b>Voorstel met uitleg</b> btw, rekening, categorie</button><button class="sm-i" data-i="5" type="button">✅ <b>Jij beslist</b> overzichtelijk, in één tik</button>
     </div>
   </div>
 </section>
@@ -894,21 +895,21 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
       p0:[['🏦','var(--lilac)','Zichtrekening','dagelijks binnen','Koffiebar De Hoek <b>− € 14,60</b>',0],['💳','var(--peach)','Kredietkaart','maandstaat','niets nieuws',1],'🔎 Compta haalt zelf alles op. Jij hoeft niets door te sturen.'],
       p1:[[['✉️','','Mailbox','geen factuur'],['🛒','','Webshops','niet hier'],['📸','var(--mint)','App','gescand ✓']],2,['🧾','var(--sun)','Kasticket','2× koffie, 1× taart','€ 14,60']],
       p2:[['🏦','var(--lilac)','− € 14,60','07/11 · De Hoek'],['🧾','var(--sun)','€ 14,60','07/11 · De Hoek'],['✓ Bedrag','✓ Datum','✓ Leverancier']],
-      p3:[[['📍','var(--pink)','Locatie','Gent · 200 m van je afspraak'],['📅','var(--soft)','Agenda','10:00 koffie met klant'],['🔁','var(--lilac)','Patroon','klantgesprek · 3× per maand']],'✓ Klopt met de realiteit'],
+      p3:[[['🔍','var(--pink)','Recente controles','restaurantkosten worden vaak nagekeken'],['📊','var(--soft)','Benchmark','consultants: ± 3× per maand, jij ook'],['🧭','var(--lilac)','Jouw profiel','agenda en locatie: klantgesprek in Gent']],'💡 Eureka: verantwoord en verdedigbaar'],
       p4:['Restaurant &amp; representatie','zoals je boekhouder boekt','21% · niet aftrekbaar','noteer met wie je afsprak'],
       p5:['geboekt · bijlage · betaling','✅ Jij scande één ticket. Compta deed de rest.'] },
     { trk:['📡','var(--soft)','Factuur internet en gsm','Telenet · 05/11 · via Peppol','€ 72,60'],
       p0:[['🏦','var(--lilac)','Zichtrekening','domiciliëring','Telenet <b>− € 72,60</b>',0],['💳','var(--peach)','Kredietkaart','maandstaat','niets nieuws',1],'🔎 De betaling komt binnen via je bank. Compta ziet ze meteen.'],
       p1:[[['✉️','','Mailbox','kopie, niet nodig'],['🛒','','Webshops','niet nodig'],['📡','var(--mint)','Peppol','e-factuur binnen ✓']],2,['🧾','var(--soft)','E-factuur (UBL)','structuur, btw-nr en lijnen al digitaal','€ 72,60']],
       p2:[['🏦','var(--lilac)','− € 72,60','07/11 · domiciliëring'],['📡','var(--soft)','€ 72,60','05/11 · Telenet'],['✓ Bedrag','✓ Mededeling','✓ Btw-nummer']],
-      p3:[[['🔁','var(--lilac)','Patroon','elke maand ± € 72'],['📄','var(--soft)','Abonnement','sinds 2024, zelfde lijnen'],['🏢','var(--pink)','Leverancier','gekend btw-nummer']],'✓ Klopt met je abonnement'],
+      p3:[[['🔍','var(--pink)','Recente controles','telecom: het privédeel wordt nagekeken'],['📊','var(--soft)','Benchmark','gelijkaardige zaken: 70 à 80% beroepsmatig'],['🧭','var(--lilac)','Jouw profiel','stabiel, elke maand hetzelfde abonnement']],'💡 Eureka: juist beroepsdeel, geen risico'],
       p4:['Telefoon &amp; internet','zoals je boekhouder boekt','21% · aftrekbaar (beroepsdeel)','privédeel volgens je eigen regel'],
       p5:['geboekt · UBL · betaling','✅ Peppol leverde de factuur. Compta deed de rest.'] },
     { trk:['🍎','var(--soft)','Factuur van Apple','Apple Distribution International · Ierland · 03/11','€ 9,99'],
       p0:[['🏦','var(--lilac)','Zichtrekening','dagelijks binnen','niets nieuws',1],['💳','var(--peach)','Kredietkaart','Mastercard','APPLE.COM/BILL <b>− € 9,99</b>',0],'🔎 Ook betalingen aan buitenlandse leveranciers worden opgehaald.'],
       p1:[[['✉️','var(--mint)','Mailbox','factuur van Apple gevonden ✓'],['🛒','','Webshops','niet nodig'],['📸','','App','niet nodig']],0,['🧾','var(--soft)','Factuur (pdf)','iCloud+ 2 TB · leverancier in Ierland','€ 9,99']],
       p2:[['💳','var(--peach)','− € 9,99','03/11 · Mastercard'],['🍎','var(--soft)','€ 9,99','03/11 · Apple'],['✓ Bedrag','✓ Datum','✓ Leverancier']],
-      p3:[[['🔁','var(--lilac)','Patroon','elke maand hetzelfde bedrag'],['🌍','var(--pink)','Land','Ierland · EU-leverancier'],['👤','var(--soft)','Account','jouw Apple ID, zakelijk gebruik']],'✓ Klopt met je abonnement'],
+      p3:[[['🔍','var(--pink)','Recente controles','buitenlandse digitale diensten: btw-regels'],['📊','var(--soft)','Benchmark','freelancers: cloudopslag is courant'],['🧭','var(--lilac)','Jouw profiel','zakelijk abonnement, elke maand']],'💡 Eureka: juiste btw-behandeling'],
       p4:['Software &amp; abonnementen','zoals je boekhouder boekt','buitenlandse leverancier · btw volgens de regel van je boekhouder','zakelijk en privé apart houden'],
       p5:['geboekt · bijlage · betaling','✅ Buitenlandse leverancier. Even vlot.'] }
   ];
