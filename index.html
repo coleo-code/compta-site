@@ -270,7 +270,10 @@ svg text{font-family:var(--f-body)}
 .wcol.new .badge{background:rgba(255,255,255,.18);color:#fff;box-shadow:none}
 .why-quote{margin-top:26px;font:800 clamp(1.3rem,2.6vw,1.9rem)/1.2 var(--f-display);letter-spacing:-.01em;max-width:30ch}
 /* demo film */
-.film{background:var(--card);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.smart{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.smart span{background:var(--card);box-shadow:var(--shadow);border-radius:14px;padding:9px 13px;font-size:.86rem;color:var(--muted)}
+.smart b{color:var(--ink);font-family:var(--f-display);margin-right:3px}
+.film{background:var(--card);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr)}
 @media (max-width:860px){.film{grid-template-columns:minmax(0,1fr)}}
 .steps{padding:24px;display:grid;gap:8px;align-content:start;border-right:1px solid var(--line)}
 @media (max-width:860px){.steps{border-right:0;border-bottom:1px solid var(--line)}}
@@ -565,23 +568,26 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
 
 <section id="demo">
   <div class="wrap">
-    <div class="sec-head"><span class="eyebrow">▶ Demo</span><h2>Van kaartbetaling tot boeking in vier stappen.</h2><p class="lead">Zo gaat een koffie met een klant door Compta. Klik op een stap of laat hem afspelen.</p></div>
+    <div class="sec-head"><span class="eyebrow">▶ Demo</span><h2>Van kaartbetaling tot boeking. Met een slimme laag ertussen.</h2><p class="lead">Jij scant hoogstens een ticket. Compta zoekt, matcht, toetst aan de realiteit en stelt voor. Zo gaat een koffie met een klant door Compta: klik op een stap of laat hem afspelen.</p></div>
     <div class="film">
       <div class="steps" id="steps">
-        <button class="step" data-i="0"><i class="n">1</i><div><b>De betaling komt binnen</b><span>Via CODA van je bank: debetkaart, € 14,60.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="1"><i class="n">2</i><div><b>Je scant het ticket</b><span>In de app, aan de toog. Klaar in twee tikken.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="2"><i class="n">3</i><div><b>Compta koppelt en kiest</b><span>Bedrag, datum en leverancier matchen. Btw 21%, rekening 612000.</span><div class="prog"><i></i></div></div></button>
-        <button class="step" data-i="3"><i class="n">4</i><div><b>Klaar voor Octopus</b><span>Met bijlage en betaling, zodra jij akkoord geeft.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="0"><i class="n">1</i><div><b>Compta vindt de betaling</b><span>Zelf opgehaald van je bank en kaart: € 14,60 op 07/11, debetkaart. Geen enkele lijn ontsnapt.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="1"><i class="n">2</i><div><b>Het bewijs wordt gezocht</b><span>Ticket gescand in de app, of zelf gevonden in je mailbox en webshops. Geen bewijs? Dan vraagt Compta erom.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="2"><i class="n">3</i><div><b>Volledig gematcht en getoetst</b><span>Bedrag, datum en leverancier kloppen. Getoetst aan je locatie en agenda, en aan best practices en de regels van je boekhouder.</span><div class="prog"><i></i></div></div></button>
+        <button class="step" data-i="3"><i class="n">4</i><div><b>Voorgesteld, jij keurt goed</b><span>Overzichtelijk klaargezet met bijlage, betaling, btw en uitleg. Eén tik en het staat in Octopus.</span><div class="prog"><i></i></div></div></button>
         <div class="playrow"><button class="btn btn-ghost" id="play" type="button" style="padding:9px 14px">❚❚ Pauze</button><span id="playlbl">Speelt automatisch</span></div>
       </div>
       <div class="scene" id="scene" data-s="0" aria-live="polite">
         <div class="sc-card sc-bank"><div style="display:flex;gap:10px;align-items:center"><span class="tile" style="background:var(--lilac)">🏦</span><div><b>Zichtrekening</b><div class="ap-mut">CODA · 07/11 · code <span class="mono">113</span> debetkaart</div></div></div><div style="display:flex;justify-content:space-between;margin-top:8px"><span>Koffiebar De Hoek</span><b class="amt" style="color:var(--warn)">− € 14,60</b></div></div>
         <div class="sc-card sc-doc"><div style="display:flex;gap:10px;align-items:center"><span class="tile" style="background:var(--sun)">🧾</span><div><b>Kasticket</b><div class="ap-mut">Gescand met de app</div></div></div><div style="display:flex;justify-content:space-between;margin-top:8px"><span>2× koffie, 1× taart</span><b class="amt">€ 14,60</b></div></div>
         <i class="link"></i>
-        <div class="sc-card sc-match"><b>✓ Gekoppeld</b><div class="ap-mut" style="margin-top:2px">Zelfde bedrag, zelfde dag, zelfde naam</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px"><span class="tg ok" style="font-size:11px">Kasticket</span><span class="tg bl" style="font-size:11px">Debetkaart</span><span class="tg bl" style="font-size:11px">Btw 21% · D21</span><span class="tg bl" style="font-size:11px">612000 Representatie</span></div></div>
+        <div class="sc-card sc-match"><b>✓ Gematcht en getoetst</b><div class="ap-mut" style="margin-top:2px">Zelfde bedrag, dag en naam · 📍 Gent · 📅 afspraak met klant</div><div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px"><span class="tg ok" style="font-size:11px">Kasticket</span><span class="tg bl" style="font-size:11px">Debetkaart</span><span class="tg bl" style="font-size:11px">Btw 21% · D21</span><span class="tg bl" style="font-size:11px">612000 Representatie</span></div></div>
         <div class="sc-card sc-octo"><b>Octopus Boekhouding</b><div class="ap-mut">Aankoopdagboek · bijlage ticket.jpg</div><div class="sent">✓ Klaar om te boeken</div></div>
         <i class="flash-cam"></i>
       </div>
+    </div>
+  <div class="smart">
+      <span>🔎 <b>Zoekt actief</b> kosten en bewijs</span><span>🔗 <b>Volledige matching</b> bank, kaart, document</span><span>📍 <b>Getoetst aan de realiteit</b> locatie, agenda, patronen</span><span>📚 <b>Best practices</b> en de regels van je boekhouder</span><span>💡 <b>Voorstel met uitleg</b> btw, rekening, categorie</span><span>✅ <b>Jij beslist</b> overzichtelijk, in één tik</span>
     </div>
   </div>
 </section>
