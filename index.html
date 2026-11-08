@@ -323,11 +323,14 @@ svg text{font-family:var(--f-body)}
 
 
 /* agent */
-.agent{display:grid;grid-template-columns:auto minmax(30px,1fr) auto minmax(30px,1fr) auto;align-items:center;justify-self:end;width:min(100%,560px)}
+.agent{display:grid;grid-template-columns:auto minmax(28px,1fr) auto minmax(28px,1fr) auto;align-items:center;justify-self:end;width:min(100%,600px)}
 .ag-col{display:grid;gap:4px;align-content:center}
-.ag-col small{font:700 9.5px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-.ag-src span{font-size:.74rem;font-weight:600;padding:3px 8px;border-radius:9px;background:var(--card);box-shadow:var(--shadow);white-space:nowrap;animation:agPing 3.2s ease-in-out infinite;animation-delay:var(--d)}
-@keyframes agPing{0%,70%,100%{outline:2px solid transparent}15%{outline:2px solid color-mix(in srgb,var(--accent) 40%,transparent)}}
+.ag-src{gap:11px}
+.ag-grp{display:grid;gap:5px}
+.ag-grp>div{display:flex;flex-wrap:wrap;gap:5px}
+.ag-col small{font:700 9.5px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ag-src span{font-size:.74rem;font-weight:600;padding:3px 8px;border-radius:9px;background:var(--card);box-shadow:var(--shadow);white-space:nowrap;animation:agPing 4.5s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes agPing{0%,80%,100%{outline:2px solid transparent}15%{outline:2px solid color-mix(in srgb,var(--accent) 40%,transparent)}}
 .ag-wire{position:relative;height:60px}
 .ag-wire::before{content:"";position:absolute;left:4px;right:4px;top:50%;border-top:2px dashed color-mix(in srgb,var(--muted) 35%,transparent)}
 .ag-wire i{position:absolute;top:calc(50% - 3.5px);left:0;width:7px;height:7px;border-radius:50%;background:var(--accent);animation:agFlow 2.1s linear infinite;animation-delay:var(--d);opacity:0}
@@ -351,7 +354,7 @@ svg text{font-family:var(--f-body)}
 .ag-quote{justify-self:end;width:auto;max-width:36ch;margin:-6px 0 0;text-wrap:balance;font-size:.82rem;font-style:italic;color:var(--muted);text-align:right}
 .ag-quote b{font-style:normal;color:var(--ink)}
 @media (max-width:960px){.agent,.ag-quote{justify-self:stretch;width:100%;text-align:left}}
-@media (max-width:560px){.agent{grid-template-columns:auto minmax(14px,1fr) auto minmax(14px,1fr) auto}.ag-src span{font-size:.66rem;padding:2px 6px}.ag-tasks{width:13ch;font-size:.66rem;height:2.6em}}
+@media (max-width:560px){.agent{grid-template-columns:auto minmax(24px,1fr) auto;row-gap:14px}.ag-src{grid-column:1/-1;grid-template-columns:1fr 1fr;gap:10px}.agent>.ag-wire:not(.out){display:none}.ag-src span{font-size:.66rem;padding:2px 6px}.ag-tasks{width:13ch;font-size:.66rem;height:2.6em}}
 
 /* rollen */
 .roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
@@ -451,10 +454,10 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
     <div class="hero-right">
       <div class="agent" aria-label="Compta Agent: zoekt kosten en bewijsstukken, toetst ze aan de realiteit en geeft ze klaar door aan je boekhouder">
         <div class="ag-col ag-src">
-          <small>Kosten</small>
-          <span style="--d:0s">🏦 CODA</span><span style="--d:.4s">🔐 PSD2</span><span style="--d:.8s">💳 Mastercard</span>
-          <small>Bewijsstukken</small>
-          <span style="--d:1.2s">✉️ E-mail</span><span style="--d:1.6s">🛒 Platformen</span>
+          <div class="ag-grp"><small>Kosten</small><div><span style="--d:0s" title="via CODA en PSD2">🏦 Bankrekening</span><span style="--d:.5s" title="Mastercard-uitgavenstaat">💳 Kredietkaart</span></div></div>
+          <div class="ag-grp"><small>Bewijsstukken</small><div><span style="--d:1s">✉️ Mailbox</span><span style="--d:1.5s">🛒 Webshops</span><span style="--d:2s">📸 Bonnetjes</span></div></div>
+          <div class="ag-grp"><small>Inkomsten</small><div><span style="--d:2.5s">🧾 Facturen</span><span style="--d:3s">💶 Ontvangsten</span></div></div>
+          <div class="ag-grp"><small>Belastingen</small><div><span style="--d:3.5s">％ Btw</span><span style="--d:4s">🛡️ Sociale bijdragen</span></div></div>
         </div>
         <div class="ag-wire"><i style="--d:0s"></i><i style="--d:.7s"></i><i style="--d:1.4s"></i></div>
         <div class="ag-core">
@@ -465,7 +468,7 @@ footer .frow{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
         <div class="ag-wire out"><i style="--d:.3s"></i><i style="--d:1.3s"></i></div>
         <div class="ag-col ag-out">
           <small>Boekhouder</small>
-          <div class="ag-doc"><span>✓</span><b>Klaar</b><em>getoetst aan de realiteit</em></div>
+          <div class="ag-doc"><span>✓</span><b>Boeking klaar</b><em>met bewijs, getoetst aan de realiteit</em></div>
         </div>
         </div>
       <p class="ag-quote">Je boekhouder kan maar boeken wat je hem brengt. Stel je voor dat je hem <b>alles</b> brengt, al getoetst aan de realiteit.</p>
